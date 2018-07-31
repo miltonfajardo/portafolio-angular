@@ -56,9 +56,18 @@ export class ProductosService {
     ));
     this.productosFiltrado.forEach(element => {
       console.log(element.titulo);
-      
     });
-    
+  }
+
+  private filtrarProductos2(termino: string) {
+    this.productosFiltrado = [];
+    termino = termino.toLocaleLowerCase();
+
+    this.productos.forEach( prod => {
+      if (prod.categoria.indexOf(termino) >= 0 || prod.titulo.indexOf(termino) >= 0) {
+        this.productosFiltrado.push(prod);
+      }
+    });
   }
 
 }
